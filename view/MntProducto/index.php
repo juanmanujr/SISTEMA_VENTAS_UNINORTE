@@ -35,10 +35,7 @@
     <link href="../../public/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../../public/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../public/lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
-
     <link href="../../public/lib/datatables/jquery.dataTables.css" rel="stylesheet">
-    <script src="../../public/lib/datatables/jquery.dataTables.js"></script>
-    <script src="../../public/lib/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../../public/css/bracket.css">
@@ -69,7 +66,6 @@
 
         <ul class="br-menu-sub nav flex-column">
           <li class="nav-item"><a href="accordion.html" class="nav-link">Productos</a></li>
-         
         </ul>
 
       </div><!-- br-sideleft-menu -->
@@ -258,7 +254,7 @@
           </div><!-- dropdown -->
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-              <span class="logged-name hidden-md-down">Laura a 5km de ti</span>
+              <span class="logged-name hidden-md-down">Katherine</span>
               <img src="http://via.placeholder.com/64x64" class="wd-32 rounded-circle" alt="">
               <span class="square-10 bg-success"></span>
             </a>
@@ -691,23 +687,23 @@
       </div><!-- br-pageheader -->
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
         <h4 class="tx-gray-800 mg-b-5">PRODUCTOS</h4>
-        <p class="mg-b-0">Página de Mantenimiento de Productos - En Proceso.</p>
+        <p class="mg-b-0">Página de Mantenimiento de Productos - En proceso...</p>
       </div>
 
       <div class="br-pagebody">
 
         <div class="br-section-wrapper">
-          <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Basic Responsive DataTable</h6>
-          <p class="mg-b-25 mg-lg-b-50">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+          <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">MANTENIMIENTO PRODUCTO</h6>
+          <p class="mg-b-25 mg-lg-b-50"></p>
 
+          <button id="btnNuevo" type="button" class="btn btn-outline-primary btn-block mg-b-10" data-toggle="modal">Nuevo Registro</button>
           <div class="table-wrapper">
             <table id="producto_data" class="table display responsive nowrap">
               <thead>
                 <tr>
                   <th class="wd-15p">Nombre Producto</th>
                   <th class="wd-15p">Acciones</th>
-                  <th class="wd-15p">Acciones</th>
-
+                  <th class="wd-20p">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -716,9 +712,8 @@
                   <td><button class="btn btn-primary">Editar</button></td>
                   <td><button class="btn btn-danger">Eliminar</button></td>
                 </tr>
-
-                 <tr>
-                  <td>Gaeosa Coca Cola Descartable 2L</td>
+                <tr>
+                  <td>Gaseosa Coca Cola Descartable 3L</td>
                   <td><button class="btn btn-primary">Editar</button></td>
                   <td><button class="btn btn-danger">Eliminar</button></td>
                 </tr>
@@ -726,9 +721,7 @@
             </table>
           </div><!-- table-wrapper -->
 
-
         </div><!-- br-section-wrapper -->
-
       </div><!-- br-pagebody -->
 
     </div><!-- br-mainpanel -->
@@ -736,6 +729,7 @@
 
     <script src="../../public/lib/jquery/jquery.js"></script>
     <script src="../../public/lib/popper.js/popper.js"></script>
+    <?php require_once("modalmantenimiento.php"); ?>
     <script src="../../public/lib/bootstrap/bootstrap.js"></script>
     <script src="../../public/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="../../public/lib/moment/moment.js"></script>
@@ -746,8 +740,9 @@
     <script src="../../public/lib/datatables-responsive/dataTables.responsive.js"></script>
 
     <script src="../../public/js/bracket.js"></script>
-    <script src = "mntProducto.Js"></script>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="mntProducto.js"></script>
+
   </body>
 </html>

@@ -1,10 +1,10 @@
 function init(){
-
+     $("#producto_form").on("submit", function(e){
+        guardaryeditar(e);
+     });
 }
 
 $(document).ready(function(){
-
-    
 
     tabla = $('#producto_data').dataTable({
 
@@ -37,12 +37,12 @@ $(document).ready(function(){
 
         "language": {
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sLengthMenu": "Mostrar MENU registros",
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando un total de _TOTAL_ registros",
+            "sInfo": "Mostrando un total de TOTAL registros",
             "sInfoEmpty": "Mostrando un total de 0 registros",
-            "sInfoFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sInfoFiltered": "(Filtrado de un total de MAX registros)",
             "sInfoPostFix": "",
             "sSearch": "Buscar:",
             "sUrl": "",
@@ -64,8 +64,37 @@ $(document).ready(function(){
 
 });
 
+function guardaryeditar(e){
+    e.preventDefault();
+    var formData = new FormData($("#producto_form")[0]);
+    $.ajax({
+        url: "../../controller/producto.php?op=guardaryeditar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos){
+
+            $('#producto_form')[0].reset();
+            $("#modalmantenimiento").modal('hide');
+            $('#producto_data').DataTable().ajax.reload();
+
+            Swal.fire(
+                'Registro!',
+                'El registro se guardó correctamente.',
+                'success'
+            )
+        }
+    });
+}
+
 function editar(prod_id){
     console.log("editar" + prod_id);
+     $("#producto_form")[0].reset();
+    $(".modal-header").css("background-color", "#28a745");
+    $(".modal-header").css("color", "white");
+    $("#mdltitulo").text("Editar Registro");
+    $("#modalmantenimiento").modal("show");
 }
 
 function eliminar(prod_id){
@@ -97,9 +126,9 @@ function eliminar(prod_id){
 }
 
 $(document).on("click", "#btnNuevo", function(){
-    // $("#producto_form")[0].reset();
-    // $(".modal-header").css("background-color", "#28a745");
-    // $(".modal-header").css("color", "white");
+    $("#producto_form")[0].reset();
+    $(".modal-header").css("background-color", "#28a745");
+    $(".modal-header").css("color", "white");
     $("#mdltitulo").text("Nuevo Registro");
     $("#modalmantenimiento").modal("show");
 });
