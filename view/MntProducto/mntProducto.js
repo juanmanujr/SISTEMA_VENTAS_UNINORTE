@@ -1,7 +1,7 @@
 function init(){
-     $("#producto_form").on("submit", function(e){
+    $("#producto_form").on("submit", function(e){
         guardaryeditar(e);
-     });
+    })
 }
 
 $(document).ready(function(){
@@ -37,12 +37,12 @@ $(document).ready(function(){
 
         "language": {
             "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar MENU registros",
+            "sLengthMenu": "Mostrar _MENU_ registros",
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando un total de TOTAL registros",
+            "sInfo": "Mostrando un total de _TOTAL_ registros",
             "sInfoEmpty": "Mostrando un total de 0 registros",
-            "sInfoFiltered": "(Filtrado de un total de MAX registros)",
+            "sInfoFiltered": "(Filtrado de un total de _MAX_ registros)",
             "sInfoPostFix": "",
             "sSearch": "Buscar:",
             "sUrl": "",
@@ -63,7 +63,6 @@ $(document).ready(function(){
     }).DataTable();
 
 });
-
 function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#producto_form")[0]);
@@ -79,7 +78,7 @@ function guardaryeditar(e){
             $("#modalmantenimiento").modal('hide');
             $('#producto_data').DataTable().ajax.reload();
 
-            Swal.fire(
+            swal.fire(
                 'Registro!',
                 'El registro se guardó correctamente.',
                 'success'
@@ -88,13 +87,15 @@ function guardaryeditar(e){
     });
 }
 
+
 function editar(prod_id){
-    console.log("editar" + prod_id);
-     $("#producto_form")[0].reset();
-    $(".modal-header").css("background-color", "#28a745");
-    $(".modal-header").css("color", "white");
-    $("#mdltitulo").text("Editar Registro");
-    $("#modalmantenimiento").modal("show");
+    $.post("../../controller/producto.php?op=mostrar",{prod_id:prod_id},function (data) {
+        data = JSON.parse(data);
+        $('#prod_id').val(data.prod_id);
+        $('#prod_nom').val(data.prod_nom);
+    });
+    $('#mdltitulo').html('Editar Registro');
+    $('#modalmantenimiento').modal('show');
 }
 
 function eliminar(prod_id){
@@ -125,11 +126,12 @@ function eliminar(prod_id){
     });
 }
 
-$(document).on("click", "#btnNuevo", function(){
+$(document).on("click", "#btnnuevo", function(){
     $("#producto_form")[0].reset();
-    $(".modal-header").css("background-color", "#28a745");
+    $(".modal-header").css("background-color", "#28a79c");
     $(".modal-header").css("color", "white");
     $("#mdltitulo").text("Nuevo Registro");
     $("#modalmantenimiento").modal("show");
+
 });
 init();
