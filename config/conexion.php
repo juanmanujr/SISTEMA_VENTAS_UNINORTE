@@ -1,3 +1,4 @@
+//conexion.php
 <?php
 
 // Clase encargada de realizar la conexión con la base de datos

@@ -1,3 +1,4 @@
+//mntProducto.js
 function init(){
     $("#producto_form").on("submit", function(e){
         guardaryeditar(e);
@@ -100,6 +101,7 @@ function editar(prod_id){
 
 function eliminar(prod_id){
     console.log("eliminar" + prod_id);
+    
 
     Swal.fire({
         title: "¿Estás seguro?",
@@ -126,7 +128,7 @@ function eliminar(prod_id){
     });
 }
 
-$(document).on("click", "#btnnuevo", function(){
+$(document).on("click", "#btnNuevo", function(){
     $("#producto_form")[0].reset();
     $(".modal-header").css("background-color", "#28a79c");
     $(".modal-header").css("color", "white");
