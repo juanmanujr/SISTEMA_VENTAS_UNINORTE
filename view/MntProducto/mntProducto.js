@@ -1,17 +1,15 @@
-//mntProducto.js
 function init(){
     $("#producto_form").on("submit", function(e){
         guardaryeditar(e);
-    })
+    });
 }
 
 $(document).ready(function(){
 
     tabla = $('#producto_data').dataTable({
-
-        "aProcessing": true, // Activamos el procesamiento de datatables
-        "aServerSide": true, // Paginación y filtrado realizados por el servidor
-        dom: 'Bfrtip', // Definimos los elementos del control de tabla
+        "aProcessing": true, 
+        // "aServerSide" se elimina para evitar conflictos con la versión moderna
+        dom: 'Bfrtip', 
 
         buttons: [
             'copyHtml5',
@@ -24,15 +22,16 @@ $(document).ready(function(){
             url: '../../controller/producto.php?op=listar',
             type: "get",
             dataType: "json",
+            dataSrc: "aaData", // <-- OBLIGATORIO: Lee la propiedad "aaData" que manda el profe
             error: function(e){
-                console.log(e.responseText);
+                console.log("Error en AJAX:", e.responseText);
             }
         },
 
         "bDestroy": true,
         "responsive": true,
         "bInfo": true,
-        "iDisplayLength": 10, //Por cada 10 registros hace una paginación
+        "iDisplayLength": 10, 
 
         "order": [[ 0, "asc" ]],
 
@@ -61,7 +60,7 @@ $(document).ready(function(){
             }
         }
 
-    }).DataTable();
+    }); // <-- NO PONGAS .DataTable() ACÁ AL FINAL
 
 });
 function guardaryeditar(e){
@@ -74,7 +73,6 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(datos){
-
             $('#producto_form')[0].reset();
             $("#modalmantenimiento").modal('hide');
             $('#producto_data').DataTable().ajax.reload();
@@ -83,7 +81,7 @@ function guardaryeditar(e){
                 'Registro!',
                 'El registro se guardó correctamente.',
                 'success'
-            )
+            );
         }
     });
 }
@@ -102,7 +100,6 @@ function editar(prod_id){
 function eliminar(prod_id){
     console.log("eliminar" + prod_id);
     
-
     Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás revertir esto!",
@@ -113,7 +110,6 @@ function eliminar(prod_id){
         confirmButtonText: "¡Sí, elimínalo!"
     }).then((result) => {
         if (result.isConfirmed) {
-
             $.post("../../controller/producto.php?op=eliminar", {prod_id: prod_id}, function(data){
                 $("#producto_data").DataTable().ajax.reload();
             });
@@ -124,7 +120,6 @@ function eliminar(prod_id){
                 icon: "success"
             });
         }
-            
     });
 }
 
@@ -134,6 +129,6 @@ $(document).on("click", "#btnNuevo", function(){
     $(".modal-header").css("color", "white");
     $("#mdltitulo").text("Nuevo Registro");
     $("#modalmantenimiento").modal("show");
-
 });
+
 init();

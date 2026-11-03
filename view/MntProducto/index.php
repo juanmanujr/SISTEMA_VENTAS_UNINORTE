@@ -1,4 +1,3 @@
-//index.php
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -698,26 +697,18 @@
           <p class="mg-b-25 mg-lg-b-50"></p>
 
           <button id="btnNuevo" type="button" class="btn btn-outline-primary btn-block mg-b-10" data-toggle="modal">Nuevo Registro</button>
+          
           <div class="table-wrapper">
             <table id="producto_data" class="table display responsive nowrap">
               <thead>
                 <tr>
                   <th class="wd-15p">Nombre Producto</th>
-                  <th class="wd-15p">Acciones</th>
-                  <th class="wd-20p">Acciones</th>
+                  <th class="wd-15p">Editar</th>
+                  <th class="wd-20p">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Agua Mineral 2L</td>
-                  <td><button class="btn btn-primary">Editar</button></td>
-                  <td><button class="btn btn-danger">Eliminar</button></td>
-                </tr>
-                <tr>
-                  <td>Gaseosa Coca Cola Descartable 3L</td>
-                  <td><button class="btn btn-primary">Editar</button></td>
-                  <td><button class="btn btn-danger">Eliminar</button></td>
-                </tr>
+                <!-- Aquí DataTables inyectará los datos automáticamente -->
               </tbody>
             </table>
           </div><!-- table-wrapper -->
@@ -743,6 +734,8 @@
     <script src="../../public/js/bracket.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+    <!-- IMPORTANTE: Asegúrate de que el archivo JS se llame así -->
     <script src="mntProducto.js"></script>
 
   </body>

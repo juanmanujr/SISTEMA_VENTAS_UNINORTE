@@ -1,4 +1,3 @@
-//Producto.php
 <?php
 
 // La clase Producto hereda las funciones de la clase Conectar
